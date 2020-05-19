@@ -87,5 +87,5 @@ const users = [
 
 localStorage.setItem('friends',JSON.stringify(friends));
 localStorage.setItem('girls', JSON.stringify(girls));
-// localStorage.setItem('user')
+// localStorage.setItem('user',  )
 localStorage.setItem('users', JSON.stringify(users));
