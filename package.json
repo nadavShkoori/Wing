@@ -4,11 +4,12 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "express": "^4.17.1",
     "lite-server": "^2.5.4"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "npx lite-server",
+    "start": "node ./src/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
