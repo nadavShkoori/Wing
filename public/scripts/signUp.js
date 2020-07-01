@@ -59,6 +59,7 @@ function createNewUser(name, email, password, description, gender) {
     gender: gender
   }
 
+
   users.push(newUser);
   localStorage.setItem('users', JSON.stringify(users));
   console.log(users);
@@ -86,8 +87,13 @@ function signUpBtnHandler() {
     return;
   }
 
-  createNewUser(nameInput, emailInput, passwordInput, descriptionInput, genderInput);
+  //createNewUser(nameInput, emailInput, passwordInput, descriptionInput, genderInput);
   // window.location.href = "../pages/login.html";
+  
+  const generatedId = Math.random().toString(36).substr(2, 9);
+  
+  writeUserData(generatedId, nameInput, emailInput, passwordInput);
+
 }
 
 
