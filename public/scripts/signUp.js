@@ -10,8 +10,16 @@ const genderInputEl = document.getElementById('gender-select');
 
 const usersList = JSON.parse(localStorage.getItem('users'));
 
+// Get a reference to the database service
+const database = firebase.database();
 
-
+function writeUserData(userId, name, email, password) {
+  firebase.database().ref('users/' + userId).set({
+    name: name,
+    email: email,
+    password : password
+  });
+}
 
 function validateEmail(emailInput) { 
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput))
