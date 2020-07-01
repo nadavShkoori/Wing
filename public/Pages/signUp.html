@@ -9,8 +9,31 @@
     </div>
   </head>
   <body>
-      <script src="/__/firebase/7.15.5/firebase-firestore.js"></script>
-      <script src="/__/firebase/init.js"></script>
+    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCV5NPyBXXgmCVW-TgCd6Yuw6iJQAqDOMw",
+    authDomain: "wingman-88eff.firebaseapp.com",
+    databaseURL: "https://wingman-88eff.firebaseio.com",
+    projectId: "wingman-88eff",
+    storageBucket: "wingman-88eff.appspot.com",
+    messagingSenderId: "881143937740",
+    appId: "1:881143937740:web:fb29f538217f0e48626069",
+    measurementId: "G-2SX10QGZYC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+    
     <form action="login.html" style="border:1px solid #ccc">
       <div class="container">
         <h1>Sign Up</h1>
