@@ -10,9 +10,6 @@ const genderInputEl = document.getElementById('gender-select');
 
 const usersList = JSON.parse(localStorage.getItem('users'));
 
-// Get a reference to the database service
-const database = firebase.database();
-
 /* function writeUserData(userId, name, email, password) {
   firebase.database().ref('users/' + userId).set({
     name: name,
@@ -31,7 +28,7 @@ function validateEmail(emailInput) {
 }
 
 function validatePassword(passwordInput, repeatPasswordInput) {
-  if (!passwordInput || passwordInput.length < 6) {
+  if (passwordInput.length < 6) {
     alert('Must have password more than 6 characters!');
     return false;
   }
@@ -39,6 +36,7 @@ function validatePassword(passwordInput, repeatPasswordInput) {
     alert('Passwords are not equal!');
     return false;
   }
+  return true;
 }
 
 function calculateUserId(users) {
@@ -75,10 +73,8 @@ function signUpBtnHandler(e) {
   const descriptionInput = descriptionEl.value;
   const genderInput = genderInputEl.value;
 
-  //writeUserData(generatedId, nameInput, emailInput, passwordInput);
-
   if (!nameInput) {
-    alert ('Must fill your name!');
+    alert ('You Must fill in your name!');
     return;
   }
 
@@ -90,15 +86,18 @@ function signUpBtnHandler(e) {
     return;
   }
 
-  //createNewUser(nameInput, emailInput, passwordInput, descriptionInput, genderInput);
-  // window.location.href = "../pages/login.html";
-
-  firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).catch(function(error) {
+  firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).then(
+  function(result) {
+    window.location.href = "../pages/login.html"
+  }  )
+  .catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
 });
+
+
 
 }
 
