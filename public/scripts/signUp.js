@@ -66,7 +66,8 @@ function createNewUser(name, email, password, description, gender) {
 }
 
 
-function signUpBtnHandler() {
+function signUpBtnHandler(e) {
+  e.preventDefault()
   const nameInput = nameInputEl.value;
   const emailInput = emailInputEl.value;
   const passwordInput = passwordInputEl.value;
