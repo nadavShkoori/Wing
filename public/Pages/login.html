@@ -6,40 +6,47 @@
     <div>
       <h1 class="logo">Win<g class="g">g</g>man</h1>
     </div>
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
   </head>
   <body>
-    <div id="login-div">
-      <text id="login-title">Login</text>
-      <br>
-      <br>
-      <input spellcheck="false" type="text" id="user-name"></input> 
-      <br>
-      <text class="under-input">User name</text> 
-      <br>
-      <br>
-      <input spellcheck="false" type="password" id="password"></input> 
-      <br>
-      <text class="under-input">Password</text>
-      <br>
-      <br>
-      <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
-      </fb:login-button>
 
-      <div id="status">
-      </div>
-      <br>
-      <br>  
-      <div id="remember-div">
-        <label id="remember">Remember me
-          <input id="checkbox" type="checkbox">
-          <span class="checkmark"></span>
-          </label>
-      </div>
-      <br>
-      <br>
-      <button id="submit">Sign In</button>
-    </div>
-    
-    
+<!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+<h1>Welcome to My Awesome App</h1>
+<div id="firebaseui-auth-container"></div>
+<div id="loader">Loading...</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCV5NPyBXXgmCVW-TgCd6Yuw6iJQAqDOMw",
+    authDomain: "wingman-88eff.firebaseapp.com",
+    databaseURL: "https://wingman-88eff.firebaseio.com",
+    projectId: "wingman-88eff",
+    storageBucket: "wingman-88eff.appspot.com",
+    messagingSenderId: "881143937740",
+    appId: "1:881143937740:web:fb29f538217f0e48626069",
+    measurementId: "G-2SX10QGZYC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+</script>
+
   </body>
 </html>
