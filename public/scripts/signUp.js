@@ -75,6 +75,12 @@ function signUpBtnHandler(e) {
   const descriptionInput = descriptionEl.value;
   const genderInput = genderInputEl.value;
 
+  const generatedId = Math.random().toString(36).substr(2, 9);
+
+  console.log(generatedId, nameInput, emailInput, passwordInput);
+
+  writeUserData(generatedId, nameInput, emailInput, passwordInput);
+  
   if (!nameInput) {
     alert ('Must fill your name!');
     return;
@@ -91,9 +97,9 @@ function signUpBtnHandler(e) {
   //createNewUser(nameInput, emailInput, passwordInput, descriptionInput, genderInput);
   // window.location.href = "../pages/login.html";
   
-  const generatedId = Math.random().toString(36).substr(2, 9);
+  //const generatedId = Math.random().toString(36).substr(2, 9);
   
-  writeUserData(generatedId, nameInput, emailInput, passwordInput);
+  //writeUserData(generatedId, nameInput, emailInput, passwordInput);
 
 }
 
