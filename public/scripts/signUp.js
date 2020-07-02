@@ -88,7 +88,7 @@ function signUpBtnHandler(e) {
 
   firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).then(
   function(result) {
-    window.location.href = "../pages/login.html"
+    window.location.href = "../Pages/login.html"
   }  )
   .catch(function(error) {
   // Handle Errors here.
