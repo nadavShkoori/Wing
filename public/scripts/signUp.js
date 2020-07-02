@@ -13,13 +13,13 @@ const usersList = JSON.parse(localStorage.getItem('users'));
 // Get a reference to the database service
 const database = firebase.database();
 
-function writeUserData(userId, name, email, password) {
+/* function writeUserData(userId, name, email, password) {
   firebase.database().ref('users/' + userId).set({
     name: name,
     email: email,
     password : password
   });
-}
+} */
 
 function validateEmail(emailInput) { 
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput))
@@ -75,12 +75,8 @@ function signUpBtnHandler(e) {
   const descriptionInput = descriptionEl.value;
   const genderInput = genderInputEl.value;
 
-  const generatedId = Math.random().toString(36).substr(2, 9);
+  //writeUserData(generatedId, nameInput, emailInput, passwordInput);
 
-  console.log(generatedId, nameInput, emailInput, passwordInput);
-
-  writeUserData(generatedId, nameInput, emailInput, passwordInput);
-  
   if (!nameInput) {
     alert ('Must fill your name!');
     return;
@@ -96,10 +92,13 @@ function signUpBtnHandler(e) {
 
   //createNewUser(nameInput, emailInput, passwordInput, descriptionInput, genderInput);
   // window.location.href = "../pages/login.html";
-  
-  //const generatedId = Math.random().toString(36).substr(2, 9);
-  
-  //writeUserData(generatedId, nameInput, emailInput, passwordInput);
+
+  firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
 
 }
 
