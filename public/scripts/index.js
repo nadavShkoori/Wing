@@ -1,12 +1,40 @@
+// const { user } = require("firebase-functions/lib/providers/auth");
+
+//const { user } = require("firebase-functions/lib/providers/auth");
+
 const currentProfileCardElement = document.getElementById("current-profile-div");
 const friendListElement = document.getElementById('friends-list');
 const trashCan = document.getElementById('garbage');
 
+
+
+let usersArray = [];
+let girlsArray = [];
+let friendsArray = [];
+
+
+//get users from Firerbase
+db.collection('users').get().then((snapshot => {
+  snapshot.docs.forEach(doc => {
+    usersArray.push(doc.data()); 
+  });
+})).then(() => {
+  for (user of usersArray) {
+    if (user.gender === "female") {
+      girlsArray.push(user);
+    } else if (user.gender === "male") {
+      friendsArray.push(user);
+    }
+  }
+
+
+console.log(usersArray);
+
 let girlIndex = 0;
-const girlsArray = JSON.parse(localStorage.getItem('girls'));
+
+
 console.log(girlsArray);
 const currentProfileCard = girlsArray[girlIndex];
-friendsArray = JSON.parse(localStorage.getItem('chosenFriends'));
 console.log(friendsArray);
 
 
@@ -89,48 +117,5 @@ friendListElement.addEventListener("click", friendMatchHandler);
 
 trashCan.addEventListener("click", removeProfileCard);
 
+});
 
-
-
-
-
-
-currentProfileCardElement.addEventListener("mousedown", dragNDrop);
-
-function dragNDrop(event) {
-  currentProfileCardElement.classList.add('move');
-  let shiftX = event.clientX - currentProfileCardElement.getBoundingClientRect().left;
-  let shiftY = event.clientY - currentProfileCardElement.getBoundingClientRect().top;
-
-  currentProfileCardElement.style.position = 'absolute';
-  currentProfileCardElement.style.zIndex = 1000;
-  document.body.append(currentProfileCardElement);
-
-  moveAt(event.pageX, event.pageY);
-
-  // moves the ball at (pageX, pageY) coordinates
-  // taking initial shifts into account
-  function moveAt(pageX, pageY) {
-    currentProfileCardElement.style.left = pageX - shiftX + 'px';
-    currentProfileCardElement.style.top = pageY - shiftY + 'px';
-  }
-
-  function onMouseMove(event) {
-    moveAt(event.pageX, event.pageY);
-  }
-
-  // move the ball on mousemove
-  document.addEventListener('mousemove', onMouseMove);
-
-  // drop the ball, remove unneeded handlers
-  currentProfileCardElement.onmouseup = function() {
-    document.removeEventListener('mousemove', onMouseMove);
-    currentProfileCardElement.onmouseup = null;
-    currentProfileCardElement.classList.remove('move');
-  };
-
-};
-
-currentProfileCardElement.ondragstart = function() {
-  return false;
-};
