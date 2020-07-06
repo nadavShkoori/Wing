@@ -2,6 +2,17 @@ const friendListElement = document.getElementById('myUL');
 const chosenFriends = [];
 const continueBtn = document.getElementById('continue');
 
+var user = firebase.auth().currentUser;
+
+setTimeout((user => {
+  if (user) {
+    console.log(user);
+  } else {
+    console.log('no user is signed in');
+  }
+}), 5000);
+
+
 
 friendsArray = JSON.parse(localStorage.getItem('friends'));
 console.log(friendsArray);
